@@ -1,3 +1,4 @@
+    <script src="js/filter.js"></script>
     <script src="js/filter1.js"></script>
     <script src="js/filter2.js"></script>
     <script src="js/filter3.js"></script>

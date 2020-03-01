@@ -46,8 +46,8 @@ $total_pages = ceil($total_records / $limit);
         <div class="form-group">  
           <label for="Price">Price</label>
           <input type="hidden" id="hidden_minimum_price" value="0" />
-          <input type="hidden" id="hidden_maximum_price" value="65000" />
-          <p id="price_show">10 - 65000</p>
+          <input type="hidden" id="hidden_maximum_price" value="1000" />
+          <p id="price_show">10 - 1000</p>
           <div id="price_range"></div>
         </div>    
 
@@ -81,7 +81,7 @@ $total_pages = ceil($total_records / $limit);
         <div class="form-group">  
           <label for="subject">Subject</label>
           <select class="form-control" id="subject">
-            <option>1</option>
+            
           </select>
         </div>
 
@@ -117,7 +117,7 @@ $total_pages = ceil($total_records / $limit);
           <div class="col-12">
 
             <form action="" name="price" method="GET()" >
-              <select name="price" id="price" onchange="submit()">
+              <select name="price" id="price">
                 <option value="lowToHigh">Low to High</option>
                 <option value="highToLow">High to Low</option>
               </select>
@@ -134,7 +134,7 @@ $total_pages = ceil($total_records / $limit);
           </div>
         </div>
 
-        <div class="row border-top p-3">
+        <div class="border-top p-3">
           <div class="row filter_data"></div>
         </div>
 
