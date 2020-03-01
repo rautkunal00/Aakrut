@@ -184,7 +184,7 @@ $total_pages = ceil($total_records / $limit);
           <div class="modal-body">
             <div class="box border p-3">
 
-              <form name="productDetails" id="productDetails" autocomplete="on">
+              <form name="productDetails" id="productDetails" autocomplete="on" enctype="multipart/form-data" method="post">
 
                 <div class="form-group row">
                   <label for="email" class="col-sm-1">Email Id:</label>
@@ -201,9 +201,9 @@ $total_pages = ceil($total_records / $limit);
                   <table class="table table-bordered table-sm" id="item_table">
                     <thead>
                       <tr>
-                        <th scope="col">No.</th>
+                        <!-- <th scope="col">No.</th> -->
                         <th scope="col">Name</th>
-                        <!-- <th scope="col">Image</th> -->
+                        <th scope="col">Image</th>
                         <th scope="col">Region</th>
                         <th scope="col">College</th>
                         <th scope="col">Branch</th>

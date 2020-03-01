@@ -40,11 +40,13 @@ else{
         $rowcount= $result->rowCount();
         $rowcount++;
         $query = "INSERT INTO `user_info` (User_Id,User_Name,Email_Id, Mobile_No) VALUES ('".$rowcount."','".$UserName."','".$EmailId."','". $UserMobile."')";
-        $connect->query($query);
         sendMail($EmailId,$UserName);
+        $statement = $connect->prepare($query);
+        $statement->execute();
+        // echo $connect->query($query);
     }
     
-    
+    $connect=null;
 }
 
 
