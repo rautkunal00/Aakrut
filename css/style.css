@@ -9,9 +9,48 @@
   }
 
   .card-img-top {
-    max-width: 200px;
+    max-width: 153px;
     max-height: 200px;
-    
+    border-radius: 5%;
+  }
+
+  .card{
+    border: none;
+    box-shadow: 0px 3px 18px -4px #98969654;
+  }
+  .card-body{
+    background: #effafd;
+    border-top-right-radius: 5%;
+    border-top-left-radius: 5%;
+  }
+  .card:hover{
+    box-shadow: 0px 3px 18px -1px #98969654;
+    transform: scale(1.002);
+  }
+
+  .card-title{
+    color: #156cc5;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 19px;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+  }
+  .price_div{
+    display: flex;
+    justify-content: space-between;
+  }
+  .price_div .price{
+    font-size: 26px;
+    font-weight: 600;
+    color: #156cc5;
+  }
+  .price_div .stock{
+    color: #35aae2;
+  }
+  .card-text{
+    color:  #016a9c
   }
 
   input[type=number]::-webkit-inner-spin-button, 

@@ -66,15 +66,14 @@ if($_POST["route"] == 4){$_POST["route"] = "Western";}
   {
    $output .= '
     <div class="col-lg-3 col-md-4 mb-4">
-      <div class="card h-100 shadow">
-        <img src="./images/product/'. $row['Product_Img'] .'" class="card-img-top" alt="...">
+      <div class="card h-100">
+        <img src="./images/product/'. $row['Product_Img'] .'" class="card-img-top mr-auto ml-auto mt-3 mb-3" alt="...">
         <div class="card-body">
-          <h5 class="card-title">'. $row['Product_Name'] .'</h5>
-          <p class="card-text">Price: '. $row['Price'] .'</p>
+          <div class="card-title"><div class="mt-auto mb-auto text-center">'. $row['Product_Name'] .'</div></div>
+          <div class="card-text price_div"><label class="stock mt-auto mb-auto">IN STOCK</label> <label class="price">Rs. '. $row['Price'] .'</label></div>
+          <p class="card-text">'. $row['Branch'] .' <br>(sem '.$row['Semester'].')</p>
+          <p class="card-text"> '. $row['Subject'] .'</p>
           <p class="card-text">College Name: '. $row['College_Name'] .'</p>
-          <p class="card-text">Brach: '. $row['Branch'] .'</p>
-          <p class="card-text">Semester: '. $row['Semester'] .'</p>
-          <p class="card-text">Subject: '. $row['Subject'] .'</p>
           <p class="card-text">Type: '. $row['Type'] .'</p>
           <p class="card-text">Description: '. $row['Description'] .'</p>
         </div>
