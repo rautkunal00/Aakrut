@@ -397,6 +397,7 @@ jQuery("#pagination li").on('click',function(e){
         });
     })
 </script>
+<script src="js/filter.js"></script>
 <script src="js/signup.js"></script>
 <script src="js/sell_product.js"></script>
  </body>

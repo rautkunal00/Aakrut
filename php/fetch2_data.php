@@ -6,13 +6,27 @@
 include('database_connection.php');
 
 
+
 if(isset($_POST["action"]))
 {
 
-  $query = "SELECT * FROM services";
+  $query = "SELECT * FROM services where 1";
   // $query = "SELECT * FROM services WHERE Service_Id IN  (SELECT User_Id FROM user_service) ";
+  if(isset($_POST["route"]) && !empty($_POST["route"]) ){
+    if($_POST["route"] == 1){$_POST["route"] = "central";}
+    if($_POST["route"] == 2){$_POST["route"] = "Harbour";}
+    if($_POST["route"] == 3){$_POST["route"] = "Trans-Harbour";}
+    if($_POST["route"] == 4){$_POST["route"] = "Western";}
 
-  if(isset($_POST["Service_Type"]))
+    $query .= " AND Region ='".$_POST["route"]."' ";
+  }
+  if(isset($_POST["college"]) && !empty($_POST["college"]) ){
+    $query .= " AND College_Id ='".$_POST["college"]."' ";
+  }
+  if(isset($_POST["branch"]) && !empty($_POST["branch"]) ){
+    $query .= " AND Branch ='".$_POST["branch"]."' ";
+  }
+  if(isset($_POST["Service_Type"]) && !empty($_POST["Service_Type"]))
   {
    $service_filter = implode("','", $_POST["Service_Type"]);
    $query .= "
@@ -64,25 +78,9 @@ if(isset($_POST["action"]))
  }
  else
  {
-  $output = '<h3>No Data Found</h3>';
+  $output = $query;
  }
  echo $output;
 }
 
 ?>
-
-
-
-<!-- 
-            // <button type="button" onclick="detail('.$row['Service_Id'].')" class="btn btn-primary" data-toggle="modal" data-target="#popup-'.$row['Service_Id'].'">          Launch demo modal
-        </button>
-
-            <div class="modal fade" id="popup-'.$row['Service_Id'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm" role="document">
-
-      </div>
-    </div>
-            // <input type="submit" onclick="detail('.$row['Service_Id'].')" class="btn btn-primary float-right px-4" />
-
-<div id="popup-'.$row['Service_Id'].'" class="modal-dialog" role="document">
-    </div> -->

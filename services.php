@@ -41,14 +41,10 @@ include('php/database_connection.php');
           </select>
         </div>
 
-        <div class="form-group">  
-          <label for="exampleFormControlSelect2">Branch</label>
-          <select class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+        <div class="form-group">   
+          <label for="branch">Branch</label>
+          <select class="form-control" id="branches">
+            <option value="">Select Branch</option> 
           </select>
         </div>
 
@@ -80,7 +76,7 @@ include('php/database_connection.php');
       
       <div class="col-lg-10">
 
-        <div class="row border-top p-3">
+        <div class="border-top p-3">
           <div class="row filter2_data"></div>
         </div>
 
@@ -191,6 +187,7 @@ include('php/database_connection.php');
     </div>
   <!-- /.Modal -->
   <script src="js/detail.js"></script>
+  <script src="js/filter_service.js"></script>
 
   <?php include 'php/footer.php';?>
   <?php include 'php/flinks.php';?>
