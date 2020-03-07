@@ -10,7 +10,7 @@ include('database_connection.php');
      $College_Name = $_POST["College_Name"];
      $College_Id = $_POST["College_Id"];
 
-  $query = "INSERT INTO `user_service` (Email_Id,User_Name,User_Mobile,Service_Type,Description,Region,College_Name,College_Id) VALUES ('".$Email_Id."','".$User_Name."','".$User_Mobile."','".$Service_Type."','".$Description."','".$Region."','".$College_Name."','".$College_Id."')";
+  $query = "INSERT INTO `services` (Email_Id,User_Name,User_Mobile,Service_Type,Description,Region,College,College_Id) VALUES ('".$Email_Id."','".$User_Name."','".$User_Mobile."','".$Service_Type."','".$Description."','".$Region."','".$College_Name."','".$College_Id."')";
      
   $statement = $connect->prepare($query);
   $statement->execute();

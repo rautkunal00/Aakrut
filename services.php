@@ -170,8 +170,6 @@ include('php/database_connection.php');
    
 
                 <input class="btn btn-primary" type="submit" name="submit" id="availableWork" value="Submit">
-
-                <!-- <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />   -->
               </form> 
 
             </div>
