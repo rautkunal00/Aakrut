@@ -78,7 +78,7 @@ if(isset($_POST["action"]))
  }
  else
  {
-  $output = $query;
+  $output = "No data found";
  }
  echo $output;
 }
