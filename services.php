@@ -134,7 +134,7 @@ include('php/database_connection.php');
                 <div class="form-group row">
                   <label for="service" class="col-sm-4">Service</label>
                   <div class="col">
-                    <select class="form-control col-sm-11" id="Service_Type">
+                    <select class="form-control col-sm-11" name="Service_Type" id="Service_Type">
                       <option>Assingment Writing</option>
                       <option>Mini Project</option>
                       <option>Final Year Project</option>
@@ -154,7 +154,7 @@ include('php/database_connection.php');
                 <div class="form-group row">  
                   <label for="route" class="col-sm-4">Route</label>
                   <div class="col">
-                    <select class="form-control col-sm-11" id="Routes">
+                    <select class="form-control col-sm-11" id="Routes" name="Region">
                     </select>
                   </div>
                 </div>
@@ -162,14 +162,14 @@ include('php/database_connection.php');
                 <div class="form-group row">  
                   <label for="college" class="col-sm-4">College</label>
                   <div class="col">
-                    <select class="form-control col-sm-11" id="colleges">
+                    <select class="form-control col-sm-11" id="colleges" name="College_Id">
                       <option value="">Select College</option>
                     </select>
                   </div>
                 </div>
    
 
-                <input class="btn btn-primary" type="submit" name="submit" id="submit" value="Submit">
+                <input class="btn btn-primary" type="submit" name="submit" id="availableWork" value="Submit">
 
                 <!-- <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />   -->
               </form> 
@@ -177,10 +177,10 @@ include('php/database_connection.php');
             </div>
           </div>
 
-          <div class="modal-footer">
+          <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          </div> -->
 
         </div>
       </div>

@@ -1,15 +1,16 @@
 $(document).ready(function(){  
 
-
-
-     $('#submits').click(function(){            
+     $('#availableWork').click(function(e){   
+        e.preventDefault(); 
+        var data = $('#serviceDetails').serialize();   
+        data +="&College_Name=xyz";    
           $.ajax({  
-               url:"insert_availableForWork.php",  
+               url:"php/insert_availableForWork.php",  
                method:"POST",  
-               data:$('#serviceDetails').serialize(),  
+               data: data,  
                success:function(data)  
-               {  
-
+               {    
+                   alert("successfully added!!!");
                }  
           });  
      });  
