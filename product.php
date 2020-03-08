@@ -116,18 +116,12 @@ $total_pages = ceil($total_records / $limit);
         <div class="row my-3">
           <div class="col-12">
 
-            <form action="" name="price" method="GET()" >
-              <select name="price" id="price">
-                <option value="lowToHigh">Low to High</option>
-                <option value="highToLow">High to Low</option>
-              </select>
-            </form>
+           
             <div class="form-group float-right ">
-              <select class="form-control mr-sm-2 rounded-0" id="sortby" name="sortby">
-                <option class="text-capitalize" value="">Sort by: Recommended</option>
-                <option class="text-capitalize hl" value="hl">Price: high to low</option>
-                <option class="text-capitalize">Price: low to high</option>
-                <option class="text-capitalize">What's new</option>
+              <select class="form-control mr-sm-2 rounded-0" id="price" name="sortby">
+                <option class="text-capitalize hl" value="highToLow">Price: high to low</option>
+                <option class="text-capitalize" value="lowToHigh">Price: low to high</option>
+                <option class="text-capitalize" value="new">What's new</option>
               </select>
             </div>     
 

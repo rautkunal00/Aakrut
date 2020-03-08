@@ -48,6 +48,9 @@ if($_POST["route"] == 4){$_POST["route"] = "Western";}
           else if($_POST["sortPrice"] == "lowToHigh") {
               $query .= "ORDER BY Price ASC ";      
             }
+          else if($_POST["sortPrice"] == "new") {
+            $query .= "ORDER BY Date_Added ASC ";      
+          }
         } 
 
 // echo $query;
