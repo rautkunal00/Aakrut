@@ -3,7 +3,17 @@
 //fetch_data.php
 
 include('database_connection.php');
-// echo $_POST["action"]."<br>".$_POST["minimum_price"]."<br>".$_POST["maximum_price"]."<br>".$_POST["college"]."<br>".$_POST["branch"]."<br>".$_POST["semester"]."<br>".$_POST["subject"]."<br>".$_POST["type"];
+
+//pagination
+if (isset($_GET['pageno'])) {
+  $pageno = $_GET['pageno'];
+} else {
+  $pageno = 1;
+} 
+$no_of_records_per_page = 10;
+$offset = ($pageno-1) * $no_of_records_per_page;
+
+
 // echo json_encode($_POST);
 if($_POST["route"] == 1){$_POST["route"] = "central";}
 if($_POST["route"] == 2){$_POST["route"] = "Harbour";}
@@ -43,32 +53,43 @@ if($_POST["route"] == 4){$_POST["route"] = "Western";}
 
     if(isset($_POST["sortPrice"])) { 
           if($_POST["sortPrice"] == "highToLow") {
-              $query .= "ORDER BY Price DESC";
+              $query .= " ORDER BY Price DESC";
             }
           else if($_POST["sortPrice"] == "lowToHigh") {
-              $query .= "ORDER BY Price ASC ";      
+              $query .= " ORDER BY Price ASC ";      
             }
           else if($_POST["sortPrice"] == "new") {
-            $query .= "ORDER BY Date_Added ASC ";      
+            $query .= " ORDER BY Date_Added ASC ";      
           }
         } 
+        $query.= " LIMIT $offset, $no_of_records_per_page";
 
 // echo $query;
 
  $statement = $connect->prepare($query);
  $statement->execute();
  $result = $statement->fetchAll();
+
  $total_row = $statement->rowCount();
+
+ 
+$total_rows = $statement->rowCount();
+$total_pages = ceil($total_rows / $no_of_records_per_page);
+ 
+
+
+
 
 
 
  $output = '';
  if($total_row > 0)
  {
+   $rowNo = 1;
   foreach($result as $row)
   {
    $output .= '
-    <div class="col-lg-3 col-md-4 mb-4">
+    <div class="col-lg-3 col-md-4 mb-4 product-card">
       <div class="card h-100">
         <img src="./images/product/'. $row['Product_Img'] .'" class="card-img-top mr-auto ml-auto mt-3 mb-3" alt="...">
         <div class="card-body">

@@ -135,25 +135,8 @@ $total_pages = ceil($total_records / $limit);
         <div id="target-content" class="clearfix">
         </div>
         
-        <nav aria-label="Page navigation example" id="target-content">
-          <ul class="pagination justify-content-end" id="pagination">
-
-            <?php if(!empty($total_pages)):for($i=1; $i<=$total_pages; $i++):  
-            if($i == 1):?>
-              <li class="page-item disabled " id="1">
-                <a class="page-link" href="php/response.php?page=1" tabindex="-1" aria-disabled="true">First</a>
-              </li>
-              <li class="page-item active" id="<?php echo $i;?>"><a href='php/response.php?page=<?php echo $i;?>' class="page-link" href="#"><?php echo $i;?></a></li>
-            <?php else:?>
-
-            <li id="<?php echo $i;?>" class="page-item"><a href='php/response.php?page=<?php echo $i;?>' class="page-link" href="#"><?php echo $i;?></a></li>
-            <?php endif;?> 
-		        <?php endfor;endif;?> 
-            <li class="page-item" id="<?php echo $total_pages;?>">
-              <a class="page-link" href="php/pagination.php?page=<?php echo $total_pages;?>">Last</a>
-            </li>
-          </ul>
-        </nav>
+        <div aria-label="Page navigation example" id="pagination"></div>
+        
       </div>
       <!-- /.col-lg-10 -->
 

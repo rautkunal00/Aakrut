@@ -97,9 +97,21 @@ $(document).ready(function () {
             },
             success: function (data) {
                 $('.filter_data').html(data);
+                var obj = $(".product-card");
+                $('#pagination').pagination({
+                    dataSource: $.map(obj, function(value, index){return [value];}),
+                    pageSize: 8,
+                    pageNumber: 1,
+                    callback: function(data, pagination) {
+                        // template method of yourself
+                        $('.filter_data').html(data);
+                    }
+                })
             }
         });
     }
+
+
 
 })
 

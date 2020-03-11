@@ -9,3 +9,4 @@
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
