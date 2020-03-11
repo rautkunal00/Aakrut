@@ -41,7 +41,6 @@
     <div id="about" class="m-5">
       <h2 class="text-capitalize">About Us</h2>
       <p>It’s an Aakrut, We are helps you to sell/shared or buy books,stationary and other study material in a best price for you and your pocket also. Aakrut knows the importance of the education in your life. Aakrut helps you to get best and premium quality of the products which demanding more in your beautiful life with price comparing show for you. The products we provide are good in rating and low in budget. Aakrut also provide the services which try to make your academic and professional life easy and meaningful. We are connecting the nearby people around you to get a better quality of service in sutaible time period to get your job done.</p>
-      <center><h2>Shared the things, shared the knowledge.</h2></center>
     </div>
   </div>
 
