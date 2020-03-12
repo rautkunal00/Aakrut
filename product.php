@@ -38,7 +38,7 @@ $total_pages = ceil($total_records / $limit);
 
     <div class="row">
 
-      <div class="col-lg-2 border">
+      <div class="col-lg-2 border filter_bar">
  
         <h5 class="text-capitalize my-3">Filters</h5>
  
@@ -128,7 +128,7 @@ $total_pages = ceil($total_records / $limit);
           </div>
         </div>
 
-        <div class="border-top p-3">
+        <div class="border-top p-3 product_page">
           <div class="row filter_data"></div>
         </div>
 

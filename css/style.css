@@ -8,6 +8,36 @@
     
   }
 
+  .filter_bar{
+    height: 800px;
+    overflow: hidden;
+  }
+  .product_page{
+    height: 700px;
+    overflow-y: auto;
+  }
+
+  /* width */
+  .product_page::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.product_page::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.product_page::-webkit-scrollbar-thumb {
+  background: rgb(143, 188, 255); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.product_page::-webkit-scrollbar-thumb:hover {
+  background: #4f8dff; 
+}
+
   .card-img-top {
     max-width: 153px;
     max-height: 200px;
