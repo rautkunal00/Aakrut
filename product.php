@@ -178,7 +178,7 @@ $total_pages = ceil($total_records / $limit);
                   <table class="table table-bordered table-sm" id="item_table">
                     <thead>
                       <tr>
-                        <!-- <th scope="col">No.</th> -->
+                        <th scope="col">No.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Image</th>
                         <th scope="col">Region</th>
