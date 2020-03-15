@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2020 at 02:59 PM
+-- Generation Time: Mar 15, 2020 at 06:48 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -41,26 +41,22 @@ CREATE TABLE `products` (
   `Type` varchar(50) NOT NULL,
   `Description` text NOT NULL,
   `Date_Added` timestamp NOT NULL DEFAULT current_timestamp(),
-  `Is_Sell` tinyint(1) NOT NULL
+  `Is_Sell` tinyint(1) NOT NULL,
+  `Email_Id` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`Product_Id`, `Product_Name`, `Product_Img`, `Region`, `College_Name`, `Branch`, `Semester`, `Subject`, `Price`, `Type`, `Description`, `Date_Added`, `Is_Sell`) VALUES
-(1, 'Techmax Information Technology', 'prod_001.jpg', 'Central', 'KJ Somaiya', 'Information Technology', 3, 'Fundamental Computing', 500, 'Reference Books', 'abcdefghijklmna', '2020-01-29 05:41:22', 0),
-(2, 'RRB Mechanical Engineering', 'prod_002.jpg', 'Harbour', 'Viva', 'Mechanical', 6, 'Discrete Mathematics', 11350, 'Reference Books', 'abcjfdfhdsjfdnf', '2020-01-29 05:41:22', 0),
-(3, 'Painting and Drawing Tools Set', 'prod_003.jpg', 'Central', 'Kelkar', 'Automobile', 1, 'Auto Cad', 1000, 'Stationary', 'abcdfklehfoibg', '2020-01-29 05:41:22', 0),
-(4, 'Flow error and Congestion Control', 'prod_004.jpg', 'Western', 'Rizvi', 'Computer Science', 3, 'Python 3', 210, 'Study Material', 'qwerejfdkml;dmgl;f', '2020-01-29 05:41:22', 0),
-(5, 'Data Structure', 'prod_005.jpg', 'Western', 'Thakur', 'Information Technology', 4, 'Data Structure', 896, 'Reference Books', 'abjksdfsdkflsdkjfhsfdlksfldmvldnvkjdsbgfdkjdbgfjsgdkjgkfdjgkjgiuweyrterhjgfdg', '2020-01-29 08:47:41', 0),
-(6, 'Strength of Materials', 'prod_006.jpg', 'Harbour', 'Pillai', 'Mechanical ', 8, 'Strength of Materials', 9450, 'Reference Books', 'klafdjdfdsmfd', '2020-01-29 08:47:41', 0),
-(7, 'Material Technology', 'prod_007.jpg', 'Trans-Harbour', 'Rodrigues', 'Mechanical ', 7, 'Material Technology', 320, 'Reference Books', 'abcdefghijklmipaftyvwxya', '2020-01-29 08:47:41', 0),
-(8, 'Computational Fluid Dynamics', 'prod_008.jpg', 'Central', 'Vishwamatak', 'Automobile ', 5, 'Computational Fluid Dynamics', 740, 'Reference Books', 'abjkxhfuhflds', '2020-01-29 08:47:42', 0),
-(13, 'Stapler', 'prod_013.jpg', 'Western', 'Atharva', 'Electrical', 1, 'Electrical vehical  Technology', 850, 'Stationary', 'aklkflkdnf', '2020-01-29 08:53:00', 0),
-(14, 'Eraser\'s', 'prod_014.jpg', 'Harbour', 'Amity', 'Electronics and Tele', 2, 'Electromagnetic Engineering', 230, 'Stationary', 'sdf;lsdflds;,;/', '2020-01-29 08:53:00', 0),
-(15, 'Highlighter', 'prod_015.jpg', 'Trans-Harbour', 'Datta', 'Instrumentation Engg', 7, 'Analytical Instrumentation', 400, 'Stationary', 'fgfgdf', '2020-01-29 08:53:00', 0),
-(16, 'Paper Clip', 'prod_016.jpg', 'Central', 'Bharat', 'Electrical', 5, 'Microwave Engineering', 650, 'Stationary', 'gfhgfhgf', '2020-01-29 08:53:00', 0);
+INSERT INTO `products` (`Product_Id`, `Product_Name`, `Product_Img`, `Region`, `College_Name`, `Branch`, `Semester`, `Subject`, `Price`, `Type`, `Description`, `Date_Added`, `Is_Sell`, `Email_Id`) VALUES
+(1, 'Strength of material', 'prod_1.jpg', '1', '5', 'Mechanical Engineering', 2, 'Strength of Materials', 300, 'Study Material', 'mechanical reference book', '2020-03-15 14:33:36', 0, 'spol421@gmail.com'),
+(2, 'Applied Math', 'prod_2.jpg', '2', '31', 'Mechanical Engineering', 2, 'Applied mathematics', 450, 'Study Material', 'reference book', '2020-03-15 14:50:21', 0, 'spol421@gmail.com'),
+(3, 'Networking book', 'prod_3.jpg', '3', '30', 'Information Technology', 3, 'Computer Networks', 400, 'Study Material', 'Information technology reference book', '2020-03-15 14:52:34', 0, 'spol421@gmail.com'),
+(4, 'Kinetics book for Mech', 'prod_4.jpg', '1', '5', 'Mechanical Engineering', 3, 'Kinematics of Machinery', 500, 'Study Material', 'reference book', '2020-03-15 15:47:46', 0, 'spol421@gmail.com'),
+(5, 'Math II', 'prod_5.png', '2', '31', 'Chemical Engineering', 1, 'Applied Mathematics II', 350, 'Study Material', 'math book', '2020-03-15 16:23:49', 0, 'spol421@gmail.com'),
+(6, 'Eraser', 'prod_6.jpg', '2', '31', 'Mechanical Engineering', 1, 'Communication Skills', 50, 'Stationary', 'Eraser', '2020-03-15 17:43:12', 0, 'shreya@gmail.com'),
+(7, 'Refrence book', 'prod_7.jpg', '1', '6', 'Automobile', 1, 'Structured Programming Approach', 400, 'Reference Books', 'ldkhff leirhvkewjfbvwekv owerhvlwejnv', '2020-03-15 17:46:55', 0, 'aryan@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -189,7 +185,7 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Product_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `Product_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_info`
