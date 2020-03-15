@@ -125,6 +125,7 @@ $(document).ready(function () {
             success: function (data) {
                 // alert(data);
                 $('.card-body#'+productID+'').append(data);
+                $('.card-body#'+productID+' .buyBtn').prop( "disabled", true );
             }
         });
     }
