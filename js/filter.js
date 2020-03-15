@@ -55,7 +55,7 @@ $(document).ready(function () {
     fireQuery();
 
 
-
+    
 
 
     function getvariables() {
@@ -105,13 +105,29 @@ $(document).ready(function () {
                     callback: function(data, pagination) {
                         // template method of yourself
                         $('.filter_data').html(data);
+                        $('.buyBtn').click(function () {
+                            var productID = this.parentElement.id;
+                            user_info_product(productID);
+                        });
                     }
                 })
             }
         });
     }
 
-
+    function user_info_product(productID) {
+        $.ajax({
+            url: "./php/get_user_info.php",
+            method: "POST",
+            data: {
+                productID: productID
+            },
+            success: function (data) {
+                // alert(data);
+                $('.card-body#'+productID+'').append(data);
+            }
+        });
+    }
 
 })
 
