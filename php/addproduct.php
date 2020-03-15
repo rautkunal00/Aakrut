@@ -38,14 +38,21 @@ function addProduct($n,$connect){
         $Price=$_POST["Price".$n.""];
         $Type=$_POST["Type".$n.""];
         $Description=$_POST["Description".$n.""];
+        $EmailId=$_POST["Email_Id"];
 
         // Finding Product ID
         $query = "SELECT * from Products ORDER BY Product_Id DESC ";
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
-    
-        $maxID = $result[0]['Product_Id'];
+        
+        if($result[0]['Product_Id']){
+            $maxID = $result[0]['Product_Id'];
+        }else{
+            $maxID = 1;
+        }
+            
+            
         $maxID++; //new product ID
 
         // File upload path
@@ -78,7 +85,7 @@ function addProduct($n,$connect){
     echo $response['message'];
        
         
-        $query = "INSERT INTO `products` (Product_Id,Product_Img,Product_Name,Region,College_Name,Branch,Semester,Subject,Price,Type,Description) VALUES ('".$maxID."','".$uploadedFile."','".$Product_Name."','".$Region."','".$College_Name."','".$Branch."','".$Semester."','".$Subject."','".$Price."','".$Type."','".$Description."')";
+        $query = "INSERT INTO `products` (Product_Id,Product_Img,Product_Name,Region,College_Name,Branch,Semester,Subject,Price,Type,Description,Email_Id) VALUES ('".$maxID."','".$uploadedFile."','".$Product_Name."','".$Region."','".$College_Name."','".$Branch."','".$Semester."','".$Subject."','".$Price."','".$Type."','".$Description."','".$EmailId."')";
         $statement = $connect->prepare($query);
         $statement->execute();
         

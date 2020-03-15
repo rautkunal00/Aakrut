@@ -15,10 +15,10 @@ $offset = ($pageno-1) * $no_of_records_per_page;
 
 
 // echo json_encode($_POST);
-if($_POST["route"] == 1){$_POST["route"] = "central";}
-if($_POST["route"] == 2){$_POST["route"] = "Harbour";}
-if($_POST["route"] == 3){$_POST["route"] = "Trans-Harbour";}
-if($_POST["route"] == 4){$_POST["route"] = "Western";}
+// if($_POST["route"] == 1){$_POST["route"] = "central";}
+// if($_POST["route"] == 2){$_POST["route"] = "Harbour";}
+// if($_POST["route"] == 3){$_POST["route"] = "Trans-Harbour";}
+// if($_POST["route"] == 4){$_POST["route"] = "Western";}
 
   if(isset($_POST["action"]))
   {
@@ -97,8 +97,8 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
           <div class="card-text price_div"><label class="stock mt-auto mb-auto">IN STOCK</label> <label class="price">Rs. '. $row['Price'] .'</label></div>
           <p class="card-text">'. $row['Branch'] .' <br>(sem '.$row['Semester'].')</p>
           <p class="card-text"> '. $row['Subject'] .'</p>
-          <p class="card-text">College Name: '. $row['College_Name'] .'</p>
           <p class="card-text">Type: '. $row['Type'] .'</p>
+          <p class="card-text" id="'. $row['College_Name'] .'"></p>
           <p class="card-text">Description: '. $row['Description'] .'</p>
         </div>
       </div>

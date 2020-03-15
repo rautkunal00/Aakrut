@@ -12,11 +12,10 @@ $(document).ready(function(){
             success:function(result){
                 if(result==1){
                     $('#item_table').show();
-                    $('#Email_Id_add').prop( "disabled", true );
                     $('#add_btn').prop( "disabled", false );
                     $('#submit_sell').hide();
                     $('#save_changes').prop( "disabled", false );
-                    alert(result);
+                    // alert(result);
                 }else if(result==2){
                     alert("You are not registered! Plese register first");
                 }else{
@@ -37,7 +36,13 @@ $(document).ready(function(){
             processData:false,
             success:function(result){
                 if(result==1){
-                    alert(result);
+                    $('#productDetails')[0].reset();
+                    $('#item_table').hide();
+                    $('#Email_Id_add').prop( "disabled", false );
+                    $('#add_btn').prop( "disabled", true );
+                    $('#submit_sell').show();
+                    $('#save_changes').prop( "disabled", true );
+                    // alert(result);
                 }else if(result==2){
                     alert("You are not registered! Plese register first "+result);
                 }else{

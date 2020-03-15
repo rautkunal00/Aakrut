@@ -98,3 +98,15 @@
   display: inline-block;
   padding: 10px;
 }
+
+.modal-xl {
+    max-width: 90%;
+}
+
+.custom_input{
+    width: 200px;
+}
+
+.modal {
+    overflow: scroll;
+}
