@@ -17,7 +17,9 @@ if(isset($_POST["Service_Id"]))
     foreach($result as $row)
     {
     $output .= '
-    <h2>'.$row["User_Name"].'</h2>
+    <p>Name: '.$row["User_Name"].'</p>
+    <p>Email: '.$row["Email_Id"].'</p>
+    <p>Mobile No.: '.$row["User_Mobile"].'</p>
     ';
     }
     echo $output;
