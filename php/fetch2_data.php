@@ -13,10 +13,10 @@ if(isset($_POST["action"]))
   $query = "SELECT * FROM services where 1";
   // $query = "SELECT * FROM services WHERE Service_Id IN  (SELECT User_Id FROM user_service) ";
   if(isset($_POST["route"]) && !empty($_POST["route"]) ){
-    if($_POST["route"] == 1){$_POST["route"] = "central";}
-    if($_POST["route"] == 2){$_POST["route"] = "Harbour";}
-    if($_POST["route"] == 3){$_POST["route"] = "Trans-Harbour";}
-    if($_POST["route"] == 4){$_POST["route"] = "Western";}
+    // if($_POST["route"] == 1){$_POST["route"] = "central";}
+    // if($_POST["route"] == 2){$_POST["route"] = "Harbour";}
+    // if($_POST["route"] == 3){$_POST["route"] = "Trans-Harbour";}
+    // if($_POST["route"] == 4){$_POST["route"] = "Western";}
 
     $query .= " AND Region ='".$_POST["route"]."' ";
   }

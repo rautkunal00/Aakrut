@@ -124,8 +124,8 @@ $(document).ready(function () {
             },
             success: function (data) {
                 // alert(data);
-                $('.card-body#'+productID+'').append(data);
-                $('.card-body#'+productID+' .buyBtn').prop( "disabled", true );
+                $('#'+productID+'.card-body').append(data);
+                $('#'+productID+'.card-body .buyBtn').prop( "disabled", true );
             }
         });
     }
