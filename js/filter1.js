@@ -32,4 +32,9 @@ $(document).ready(function () {
       $('#college').html('<option value="">Select college</option>');
     }
   });
+
+  
+
+
+
 });

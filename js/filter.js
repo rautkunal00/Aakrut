@@ -109,6 +109,11 @@ $(document).ready(function () {
                             var productID = this.parentElement.id;
                             user_info_product(productID);
                         });
+                        $.getJSON('data/filter1.json', function (data) {
+                            $.each(data, function (key, value) {
+                              $(`.clg_name.${value.id}`).html("College name: "+value.name);
+                            })
+                          });
                     }
                 })
             }

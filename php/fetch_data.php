@@ -98,7 +98,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
           <p class="card-text">'. $row['Branch'] .' <br>(sem '.$row['Semester'].')</p>
           <p class="card-text"> '. $row['Subject'] .'</p>
           <p class="card-text">Type: '. $row['Type'] .'</p>
-          <p class="card-text" id="'. $row['College_Name'] .'"></p>
+          <p class="card-text clg_name '. $row['College_Name'] .'" id=""></p>
           <p class="card-text">Description: '. $row['Description'] .'</p>
           <button type="button" id="buyBtn" class="btn buyBtn btn-danger rounded-2 text-capitalize float-right">Buy</button>
         </div>
