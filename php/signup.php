@@ -94,8 +94,8 @@ else{
             $mail->Host       = 'smtp.gmail.com';              
             $mail->Port       = 465;
             $mail->isHTML(true);
-            $mail->Username   = 'teamtech.init@gmail.com';
-            $mail->Password   = 'Te@m_w1N';               
+            $mail->Username   = '******@gmail.com';
+            $mail->Password   = '*******';               
 
             //Recipients
             $mail->setFrom('teamtech.init@gmail.com', 'Mailer');
