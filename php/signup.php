@@ -34,16 +34,19 @@ else{
     $rowcount= $result->rowCount();
     if($rowcount > 0){
         echo 1;
-    }else{
+    }
+    else if(isset($_POST['Create_user'])){
         $query = "SELECT * FROM `user_info` WHERE 1";
         $result = $connect->query($query);
         $rowcount= $result->rowCount();
         $rowcount++;
-        $query = "INSERT INTO `user_info` (User_Id,User_Name,Email_Id, Mobile_No) VALUES ('".$rowcount."','".$UserName."','".$EmailId."','". $UserMobile."')";
-        sendMail($EmailId,$UserName);
+        $query = "INSERT INTO `user_info` (`User_Id`,`User_Name`,`Email_Id`,`Mobile_No`) VALUES ('".$rowcount."','".$UserName."','".$EmailId."','". $UserMobile."')";
         $statement = $connect->prepare($query);
         $statement->execute();
-        // echo $connect->query($query);
+        echo "User created successfully!!!";
+    }
+    else{
+        sendMail($EmailId,$UserName);
     }
     
     $connect=null;
@@ -105,10 +108,10 @@ else{
             $mail->send();
             $output = $otp;
             $output = $otp;
-            echo $output;
+            echo $otp;
         } catch (Exception $e) {
             $output= false;
-            // $output[3]= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            // $output= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             echo $output;
         }
   }      

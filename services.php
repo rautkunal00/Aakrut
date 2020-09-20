@@ -126,7 +126,7 @@ include('php/database_connection.php');
                 <div class="form-group row">
                   <label for="edu" class="col-sm-4">Mobile</label>
                   <div class="col">
-                    <input type="number" class="form-control col-sm-11" required name="User_Mobile" id="User_Mobile" aria-describedby="User_MobileHelp" placeholder="Enter mobile number">
+                    <input type="number" class="form-control col-sm-11" required name="User_Mobile" minlength=10 id="User_Mobile" aria-describedby="User_MobileHelp" placeholder="Enter mobile number">
                     <small id="educheck"></small>
                   </div>
                 </div>
@@ -134,7 +134,7 @@ include('php/database_connection.php');
                 <div class="form-group row">
                   <label for="service" class="col-sm-4">Service</label>
                   <div class="col">
-                    <select class="form-control col-sm-11" name="Service_Type" id="Service_Type">
+                    <select class="form-control col-sm-11" name="Service_Type" id="Service_Type" required>
                       <option>Assingment Writing</option>
                       <option>Mini Project</option>
                       <option>Final Year Project</option>
@@ -154,7 +154,7 @@ include('php/database_connection.php');
                 <div class="form-group row">  
                   <label for="route" class="col-sm-4">Route</label>
                   <div class="col">
-                    <select class="form-control col-sm-11" id="Routes" name="Region">
+                    <select class="form-control col-sm-11" id="Routes" name="Region" required>
                     </select>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ include('php/database_connection.php');
                 <div class="form-group row">  
                   <label for="college" class="col-sm-4">College</label>
                   <div class="col">
-                    <select class="form-control col-sm-11" id="colleges" name="College_Id">
+                    <select class="form-control col-sm-11" id="colleges" name="College_Id" required>
                       <option value="">Select College</option>
                     </select>
                   </div>

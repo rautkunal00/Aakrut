@@ -6,6 +6,9 @@ $(document).ready(function () {
   function load_json_data(id, parent_id) {
     var html_code = '';
     $.getJSON('data/filter1.json', function (data) {
+      var data = data.sort(function(a, b){
+        return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0; 
+      });
       html_code += '<option value="">Select ' + id + '</option>';
       $.each(data, function (key, value) {
         if (id == 'Route') {

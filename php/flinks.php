@@ -1,4 +1,5 @@
-
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="js/filter1.js"></script>
     <script src="js/filter2.js"></script>
     <script src="js/filter3.js"></script>

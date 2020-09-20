@@ -47,7 +47,7 @@ $total_pages = ceil($total_records / $limit);
           <label for="Price">Price</label>
           <input type="hidden" id="hidden_minimum_price" value="0" />
           <input type="hidden" id="hidden_maximum_price" value="1000" />
-          <p id="price_show">10 - 1000</p>
+          <p id="price_show"></p>
           <div id="price_range"></div>
         </div>    
 
@@ -81,7 +81,7 @@ $total_pages = ceil($total_records / $limit);
         <div class="form-group">  
           <label for="subject">Subject</label>
           <select class="form-control" id="subject">
-            
+          <option selected="selected" class="sele" value="0">Select subject</option>
           </select>
         </div>
 
@@ -247,7 +247,7 @@ $total_pages = ceil($total_records / $limit);
                 <div class="form-group row">
                   <label for="edu" class="col-sm-1">Mobile:</label>
                   <div class="col">
-                    <input type="number" class="form-control col-sm-4" required name="User_Mobile" id="User_Mobile" aria-describedby="User_MobileHelp" placeholder="Enter mobile number">
+                    <input type="number" class="form-control col-sm-4" required name="User_Mobile" id="User_Mobile" minlength=10 aria-describedby="User_MobileHelp" placeholder="Enter mobile number">
                     <small id="educheck"></small>
                   </div>
                 </div>
@@ -354,29 +354,36 @@ $total_pages = ceil($total_records / $limit);
   <?php include 'php/flinks.php';?>
 
   <script type="text/javascript">
-// $(document).ready(function(){
-// 	jQuery("#target-content").load("php/response.php?page=1");
-// })
+      // $(document).ready(function(){
+      //   jQuery("#target-content").load("php/response.php?page=1");
+      // })
 
-jQuery("#pagination li").on('click',function(e){
- e.preventDefault();
- jQuery("#target-content").html('loading...');
- jQuery("#pagination li").removeClass('active');
- jQuery(this).addClass('active');
-        var pageNum = this.id;
-        console.log(pageNum);
-        jQuery(".filter_data").load("php/response.php?page=" + pageNum);
-});
+      jQuery("#pagination li").on('click',function(e){
+      e.preventDefault();
+      jQuery("#target-content").html('loading...');
+      jQuery("#pagination li").removeClass('active');
+      jQuery(this).addClass('active');
+              var pageNum = this.id;
+              console.log(pageNum);
+              jQuery(".filter_data").load("php/response.php?page=" + pageNum);
+      });
 
-    $('#sort').on('change', function () {
-        $.post('php/fetch_data.php', {sort: $(this).val()}, function (response) {
-            $('#sort-ajax').html(response);
-        });
-    })
+      $('#sort').on('change', function () {
+          $.post('php/fetch_data.php', {sort: $(this).val()}, function (response) {
+              $('#sort-ajax').html(response);
+          });
+      });
 </script>
-<script src="js/filter.js"></script>
-<script src="js/signup.js"></script>
-<script src="js/sell_product.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<!-- <script>
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$('#signupform').validate();</script> -->
+<script type="text/javascript" src="js/signup.js"></script>
+<script type="text/javascript" src="js/sell_product.js"></script>
  </body>
 </html>
 
