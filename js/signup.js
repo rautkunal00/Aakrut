@@ -21,7 +21,7 @@ $(document).ready(function(){
                         otp = result;
                         $('#signup').prop( "disabled", true );
                         $('#signupNext').show();
-                        alert("Form submitted successfully"+result);
+                        alert("Form submitted successfully");
                     }else{
                         console.log(result);
                         $('#signupNext').hide();

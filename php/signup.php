@@ -40,7 +40,7 @@ else{
         $result = $connect->query($query);
         $rowcount= $result->rowCount();
         $rowcount++;
-        $query = "INSERT INTO `user_info` (`User_Id`,`User_Name`,`Email_Id`,`Mobile_No`) VALUES ('".$rowcount."','".$UserName."','".$EmailId."','". $UserMobile."')";
+        $query = "INSERT INTO `user_info` (`User_Id`,`User_Name`,`Email_Id`,`Mobile_No`) VALUES ('null','{$UserName}','{$EmailId}','{$UserMobile}')";
         $statement = $connect->prepare($query);
         $statement->execute();
         echo "User created successfully!!!";
@@ -90,15 +90,15 @@ else{
             //Server settings
             $mail->isSMTP();                                      
             $mail->SMTPAuth   = true;                         
-            $mail->SMTPSecure = 'ssl';  
-            $mail->Host       = 'smtp.gmail.com';              
-            $mail->Port       = 465;
+            $mail->SMTPSecure = 'ttl';  
+            $mail->Host       = 'smtp.hostinger.in';              
+            $mail->Port       = 587;
             $mail->isHTML(true);
-            $mail->Username   = '******@gmail.com';
-            $mail->Password   = '*******';               
+            $mail->Username   = 'contact@aakrut.com';
+            $mail->Password   = 'Aakrut@890';               
 
             //Recipients
-            $mail->setFrom('teamtech.init@gmail.com', 'Mailer');
+            $mail->setFrom('contact@aakrut.com', 'Mailer');
             $mail->addAddress($EmailId, $UserName);     
 
             // Content
@@ -111,7 +111,7 @@ else{
             echo $otp;
         } catch (Exception $e) {
             $output= false;
-            // $output= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            $output= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             echo $output;
         }
   }      
