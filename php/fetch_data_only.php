@@ -31,7 +31,7 @@ $offset = ($pageno-1) * $no_of_records_per_page;
     $query .= " AND Branch ='".$_POST["branch"]."' ";
   }
   if(isset($_POST["college"]) && !empty($_POST["college"]) ){
-    $query .= " AND College_Name ='".$_POST["college"]."' ";
+    $query .= " AND College_Id ='".$_POST["college"]."' ";
   }
   if(isset($_POST["semester"]) && !empty($_POST["semester"]) ){
     $query .= " AND Semester ='".$_POST["semester"]."' ";
@@ -77,53 +77,7 @@ $total_rows = $statement->rowCount();
 $total_pages = ceil($total_rows / $no_of_records_per_page);
  
 
-
-
-
-
-
- $output = '';
- if($total_row > 0)
- {
-   $rowNo = 1;
-  foreach($result as $row)
-  {
-   $output .= '
-    <div class="col-lg-3 col-md-4 mb-4 product-card">
-      <div class="card h-100">
-        <img src="./images/product/'. $row['Product_Img'] .'" class="card-img-top mr-auto ml-auto mt-3 mb-3" alt="...">
-        <div class="card-body" id="'. $row['Product_Id'] .'">
-          <div class="card-title"><div class="mt-auto mb-auto text-center">'. $row['Product_Name'] .'</div></div>
-          <div class="card-text price_div"><label class="stock mt-auto mb-auto">IN STOCK</label> <label class="price">Rs. '. $row['Price'] .'</label></div>
-          <p class="card-text">'. $row['Branch'] .' <br>(sem '.$row['Semester'].')</p>
-          <p class="card-text"> '. $row['Subject'] .'</p>
-          <p class="card-text">Type: '. $row['Type'] .'</p>
-          <p class="card-text clg_name '. $row['College_Name'] .'" id=""></p>
-          <p class="card-text">Description: '. $row['Description'] .'</p>
-          <button type="button" id="buyBtn" class="btn buyBtn btn-danger rounded-2 text-capitalize float-right">Buy</button>
-        </div>
-      </div>
-    </div>
-   ';
-  }
-   if($total_row == 3){
-    $output .= '<div class="col-lg-3 col-md-4 mb-4"></div>';
-   }
-   if($total_row == 2){
-    $output .= '<div class="col-lg-3 col-md-4 mb-4"></div>';
-    $output .= '<div class="col-lg-3 col-md-4 mb-4"></div>';
-   }
-   if($total_row == 1){
-    $output .= '<div class="col-lg-3 col-md-4 mb-4"></div>';
-    $output .= '<div class="col-lg-3 col-md-4 mb-4"></div>';
-    $output .= '<div class="col-lg-3 col-md-4 mb-4"></div>';
-   }
- }
- else
- {
-  $output = '<h3>No Data Found</h3>';
- }
- echo $output;
+ echo json_encode($result);
 
 }
 

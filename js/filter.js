@@ -11,20 +11,9 @@ $(document).ready(function () {
     var type = "";
     var sortPrice = "";
 
-    //slider filter
-    $('#price_range').slider({
-        range: true,
-        min: 10,
-        max: 1000,
-        values: [10, 1000],
-        step: 5,
-        stop: function (event, ui) {
-            $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-            $('#hidden_minimum_price').val(ui.values[0]);
-            $('#hidden_maximum_price').val(ui.values[1]);
-            fireQuery();
-        }
-    });
+    fireQuery2();
+
+    
 
     $("#Route").change(function () {
         fireQuery();
@@ -53,9 +42,10 @@ $(document).ready(function () {
     });
 
     fireQuery();
+    fireQuery2();
 
 
-    
+
 
 
     function getvariables() {
@@ -99,23 +89,68 @@ $(document).ready(function () {
                 $('.filter_data').html(data);
                 var obj = $(".product-card");
                 $('#pagination').pagination({
-                    dataSource: $.map(obj, function(value, index){return [value];}),
+                    dataSource: $.map(obj, function (value, index) { return [value]; }),
                     pageSize: 8,
                     pageNumber: 1,
-                    callback: function(data, pagination) {
-                        // template method of yourself
-                        $('.filter_data').html(data);
+                    callback: function (data, pagination) {
                         $('.buyBtn').click(function () {
                             var productID = this.parentElement.id;
                             user_info_product(productID);
                         });
-                        $.getJSON('data/filter1.json', function (data) {
-                            $.each(data, function (key, value) {
-                              $(`.clg_name.${value.id}`).html("College name: "+value.name);
+                        $.getJSON('data/filter1.json', function (info) {
+                            $.each(info, function (key, value) {
+                                ($(`.clg_name`).length) ? $(`.clg_name.${value.id}`).html("College name: " + value.name) : "";
                             })
-                          });
+                        });
                     }
                 })
+            }
+        });
+    }
+
+    function fireQuery2() {
+        getvariables();
+        $.ajax({
+            url: "./php/fetch_data_only.php",
+            method: "POST",
+            data: {
+                action: action,
+                minimum_price: minimum_price,
+                maximum_price: maximum_price,
+                route: route,
+                college: college,
+                branch: branch,
+                semester: semester,
+                subject: subject,
+                type: type,
+                sortPrice: sortPrice
+            },
+            success: function (data) {
+                var min_price = 10
+                var max_price = 10;
+                
+                data = JSON.parse(data);
+                $.each(data, function (key, value) {
+                    max_price = (max_price >= parseInt(value.Price)) ? max_price : parseInt(value.Price);;
+                })
+                console.log(max_price)
+                //slider filter
+                $('#price_show').html(min_price + ' - ' + max_price);
+                $('#hidden_minimum_price').val(min_price);
+                $('#hidden_maximum_price').val(max_price);
+                $('#price_range').slider({
+                range: true,
+                min: min_price,
+                max: max_price,
+                values: [min_price, max_price],
+                step: 5,
+                stop: function (event, ui) {
+                $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+                $('#hidden_minimum_price').val(ui.values[0]);
+                $('#hidden_maximum_price').val(ui.values[1]);
+                fireQuery();
+                }
+                });
             }
         });
     }
@@ -129,8 +164,8 @@ $(document).ready(function () {
             },
             success: function (data) {
                 // alert(data);
-                $('#'+productID+'.card-body').append(data);
-                $('#'+productID+'.card-body .buyBtn').prop( "disabled", true );
+                $('#' + productID + '.card-body').append(data);
+                $('#' + productID + '.card-body .buyBtn').prop("disabled", true);
             }
         });
     }

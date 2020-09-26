@@ -24,7 +24,7 @@
         <a href=services.php><img class="d-block w-100 " src="images/index_img/services.jpeg" alt="Second slide"></a>
       </div>
       <div class="carousel-item">
-        <a><img class="d-block w-100 " src="https://i.picsum.photos/id/1011/5472/3648.jpg" alt="Third slide"></a>
+        <a><img class="d-block w-100 " src="images/index_img/college-library.jpg" alt="Third slide"></a>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

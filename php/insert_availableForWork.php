@@ -7,7 +7,7 @@ include('database_connection.php');
      $Service_Type = $_POST["Service_Type"];
      $Description = $_POST["Description"];
      $Region = $_POST["Region"];
-     $College_Name = "xyz";
+     $College_Name = $_POST["College_Name"];;
      $College_Id = $_POST["College_Id"];
 
      // Finding service ID

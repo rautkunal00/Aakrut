@@ -34,16 +34,19 @@ else{
     $rowcount= $result->rowCount();
     if($rowcount > 0){
         echo 1;
-    }else{
+    }
+    else if(isset($_POST['Create_user'])){
         $query = "SELECT * FROM `user_info` WHERE 1";
         $result = $connect->query($query);
         $rowcount= $result->rowCount();
         $rowcount++;
-        $query = "INSERT INTO `user_info` (User_Id,User_Name,Email_Id, Mobile_No) VALUES ('".$rowcount."','".$UserName."','".$EmailId."','". $UserMobile."')";
-        sendMail($EmailId,$UserName);
+        $query = "INSERT INTO `user_info` (`User_Id`,`User_Name`,`Email_Id`,`Mobile_No`) VALUES ('null','{$UserName}','{$EmailId}','{$UserMobile}')";
         $statement = $connect->prepare($query);
         $statement->execute();
-        // echo $connect->query($query);
+        echo "User created successfully!!!";
+    }
+    else{
+        sendMail($EmailId,$UserName);
     }
     
     $connect=null;
@@ -87,15 +90,15 @@ else{
             //Server settings
             $mail->isSMTP();                                      
             $mail->SMTPAuth   = true;                         
-            $mail->SMTPSecure = 'ssl';  
-            $mail->Host       = 'smtp.gmail.com';              
-            $mail->Port       = 465;
+            $mail->SMTPSecure = 'ttl';  
+            $mail->Host       = 'smtp.hostinger.in';              
+            $mail->Port       = 587;
             $mail->isHTML(true);
-            $mail->Username   = 'teamtech.init@gmail.com';
-            $mail->Password   = 'Te@m_w1N';               
+            $mail->Username   = 'contact@aakrut.com';
+            $mail->Password   = 'Aakrut@890';               
 
             //Recipients
-            $mail->setFrom('teamtech.init@gmail.com', 'Mailer');
+            $mail->setFrom('contact@aakrut.com', 'Mailer');
             $mail->addAddress($EmailId, $UserName);     
 
             // Content
@@ -105,10 +108,10 @@ else{
             $mail->send();
             $output = $otp;
             $output = $otp;
-            echo $output;
+            echo $otp;
         } catch (Exception $e) {
             $output= false;
-            // $output[3]= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            $output= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             echo $output;
         }
   }      
