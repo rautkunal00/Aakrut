@@ -6,7 +6,7 @@ function load_data() {
       listSemesterItems += "<option>" + info.semester[i] + "</option>";
     }
     $("#semester").html(listSemesterItems);
-
+    load_data2()
   });
 
 }
@@ -16,8 +16,12 @@ function load_data2() {
     var listSubject = '<option selected="selected" value="0">Select Subject</option>';
     var branch = $('#branches').val();
     var semester = $('#semester').val();
-    for (i = 0; i < info.Branches[branch][semester].length; i++) {
-      listSubject += "<option>" + info.Branches[branch][semester][i] + "</option>";
+    if(branch==0){
+      listSubject = '<option selected="selected" value="0">Select Subject</option>';
+    }else{
+      for (i = 0; i < info.Branches[branch][semester].length; i++) {
+        listSubject += "<option>" + info.Branches[branch][semester][i] + "</option>";
+      }
     }
     $("#subject").html(listSubject);
 
