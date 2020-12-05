@@ -10,12 +10,15 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
+   ob_start();
+   session_start();
+
 $output = "";
 $UserName="";
 $EmailId="";
 $UserMobile="";
 
-if( empty($_POST["User_Name"]) || empty($_POST["Email_Id"]) || empty($_POST["User_Mobile"]) ) {
+if( empty($_POST["User_Name"]) || empty($_POST["Email_Id"]) || empty($_POST["Password"]) || empty($_POST["User_Mobile"]) ) {
     $output = false;
     echo $output;
 }
@@ -25,6 +28,8 @@ else{
     {$UserName=$_POST['User_Name'];}
     if(isset($_POST['Email_Id']))
     {$EmailId=$_POST['Email_Id'];}
+    if(isset($_POST['Password']))
+    {$Password=$_POST['Password'];}
     if(isset($_POST['User_Mobile']))
     {$UserMobile=$_POST['User_Mobile'];}
 
@@ -40,9 +45,13 @@ else{
         $result = $connect->query($query);
         $rowcount= $result->rowCount();
         $rowcount++;
-        $query = "INSERT INTO `user_info` (`User_Id`,`User_Name`,`Email_Id`,`Mobile_No`) VALUES ('null','{$UserName}','{$EmailId}','{$UserMobile}')";
+        $query = "INSERT INTO `user_info` (`User_Id`,`User_Name`,`Email_Id`,`Password`,`Mobile_No`) VALUES ('null','{$UserName}','{$EmailId}','{$Password}','{$UserMobile}')";
         $statement = $connect->prepare($query);
         $statement->execute();
+
+        $_SESSION['valid'] = true;
+        $_SESSION['timeout'] = time();
+        $_SESSION['username'] = $UserName;
         echo "User created successfully!!!";
     }
     else{
