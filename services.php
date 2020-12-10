@@ -1,6 +1,7 @@
 <?php 
 
 //index.php
+session_start();
 
 include('php/database_connection.php');
 
@@ -110,7 +111,7 @@ include('php/database_connection.php');
                 <div class="form-group row">
                   <label for="email" class="col-sm-4">Email Id</label>
                   <div class="col">
-                    <input type="email" class="form-control col-sm-11" required name="Email_Id" id="Email_Id" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
+                    <input type="email" class="form-control col-sm-11" required name="Email_Id" id="Email_Id" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus value=<?php echo $_SESSION['Email_Id'] ?> disabled>
                     <small id="itemcheck"></small>
                   </div>
                 </div>
@@ -118,7 +119,7 @@ include('php/database_connection.php');
                 <div class="form-group row">
                   <label for="name" class="col-sm-4">Name</label>
                   <div class="col">
-                    <input type="text" class="form-control col-sm-11" required name="User_Name" id="User_Name" aria-describedby="User_NameHelp" placeholder="Enter Name">
+                    <input type="text" class="form-control col-sm-11" required name="User_Name" id="User_Name" aria-describedby="User_NameHelp" placeholder="Enter Name"  value=<?php echo $_SESSION['User_name'] ?> disabled>
                     <small id="namecheck"></small>
                   </div>
                 </div>
@@ -126,7 +127,7 @@ include('php/database_connection.php');
                 <div class="form-group row">
                   <label for="edu" class="col-sm-4">Mobile</label>
                   <div class="col">
-                    <input type="number" class="form-control col-sm-11" required name="User_Mobile" minlength=10 id="User_Mobile" aria-describedby="User_MobileHelp" placeholder="Enter mobile number">
+                    <input type="number" class="form-control col-sm-11" required name="User_Mobile" minlength=10 id="User_Mobile" aria-describedby="User_MobileHelp" placeholder="Enter mobile number" value=<?php echo $_SESSION['Mobile_No'] ?>>
                     <small id="educheck"></small>
                   </div>
                 </div>
@@ -186,6 +187,7 @@ include('php/database_connection.php');
   <!-- /.Modal -->
   <script src="js/detail.js"></script>
   <script src="js/filter_service.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
 
   <?php include 'php/footer.php';?>
   <?php include 'php/flinks.php';?>

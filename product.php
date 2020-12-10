@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 //index.php
 
 include('php/database_connection.php');
@@ -104,7 +104,7 @@ $total_pages = ceil($total_records / $limit);
         </div>
       
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".start-modal-xl">
+        <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".bd-example-modal-xl">
           Sell your product
         </button>
 
@@ -166,7 +166,7 @@ $total_pages = ceil($total_records / $limit);
                 <div class="form-group row">
                   <label for="email" class="col-sm-1">Email Id:</label>
                   <div class="col">
-                    <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id_add" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
+                    <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id_add" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus value=<?php echo $_SESSION['Email_Id'] ?>>
                     <small id="itemcheck"></small>
                   </div>
                 </div>
@@ -376,14 +376,15 @@ $total_pages = ceil($total_records / $limit);
 </script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/signup.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/sell_product.js"></script>
 <!-- <script>
 jQuery.validator.setDefaults({
   debug: true,
   success: "valid"
 });
 $('#signupform').validate();</script> -->
-<script type="text/javascript" src="js/signup.js"></script>
-<script type="text/javascript" src="js/sell_product.js"></script>
  </body>
 </html>
 

@@ -1,15 +1,21 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php include 'php/hlinks.php';?>
-    <title>Aakrut</title>
-  </head>
-  <body>
 
-  <?php include 'php/navbar.php';?>
+<?php
+session_start();
+?>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <?php include 'php/hlinks.php'; ?>
+  <title>Aakrut</title>
+</head>
+
+<body>
+
+  <?php include 'php/navbar.php'; ?>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -37,6 +43,194 @@
     </a>
   </div>
 
+  <!--=====================        Login first page          ============================== -->
+
+  <div class="modal fade start-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Login to proceed</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="box border p-3">
+
+            <p>Are you a new user?</p>
+            <p>Please signup for proceed further</p>
+            <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".signup-modal-xl" data-dismiss="modal">
+              Sign Up
+            </button>
+            <p>Already register?</p>
+            <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".bd-example-modal-xl" data-dismiss="modal">
+              Login
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--=====================        Signup  page          ============================== -->
+
+  <div class="modal fade signup-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Sign up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="box border p-3">
+
+            <form id="signupform" method="post" autocomplete="on">
+
+              <div class="form-group row">
+                <label for="email" class="col-sm-1">Email Id:</label>
+                <div class="col">
+                  <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
+                  <small id="itemcheck"></small>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="email" class="col-sm-1">Password:</label>
+                <div class="col">
+                  <input type="password" class="form-control col-sm-4" required name="Password" id="Password_add" aria-describedby="Password_IdHelp" placeholder="Enter Password">
+                  <small id="itemcheck"></small>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="name" class="col-sm-1">Name:</label>
+                <div class="col">
+                  <input type="text" class="form-control col-sm-4" required name="User_Name" id="User_Name" aria-describedby="User_NameHelp" placeholder="Enter Name">
+                  <small id="namecheck"></small>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="edu" class="col-sm-1">Mobile:</label>
+                <div class="col">
+                  <input type="number" class="form-control col-sm-4" required name="User_Mobile" id="User_Mobile" minlength=10 aria-describedby="User_MobileHelp" placeholder="Enter mobile number">
+                  <small id="educheck"></small>
+                </div>
+              </div>
+              <input class="btn btn-primary text-capitalize mb-4" type="submit" name="signup" id="signup" value="Submit">
+              <input class="btn btn-primary text-capitalize mb-4" type="submit" name="next" id="signupNext" data-toggle="modal" data-target=".otp-modal-xl" data-dismiss="modal" value="Next">
+
+
+            </form>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--=====================        OTP  page          ============================== -->
+
+  <div class="modal fade otp-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Verify your Email ID</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="box border p-3">
+
+            <form name="otpCheck" id="otpCheck" autocomplete="on">
+              <div class="alert alert-danger" id="otp_err">
+                OTP does not match.
+              </div>
+              <div class="alert alert-success" id="otp_succ">
+                <strong>Success!</strong> OTP match successfully.
+              </div>
+              <p>Enter OTP send to your Email ID</p>
+              <div class="form-group row">
+                <label for="email" class="col-sm-1">OTP:</label>
+                <div class="col">
+                  <input class="form-control col-sm-4" required name="otp" id="otpinput" placeholder="Enter OTP" autofocus>
+                  <small id="itemcheck"></small>
+                </div>
+              </div>
+
+              <input class="btn btn-primary" type="submit" name="otpVerify" id="otpVerify" value="Verify">
+              <input class="btn btn-primary" type="submit" name="otpNext" id="otpNext" data-toggle="modal" data-target=".bd-example-modal-xl" data-dismiss="modal" value="Next">
+            </form>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="box border p-3">
+
+            <form name="LoginForm" id="LoginForm" autocomplete="on" enctype="multipart/form-data" method="post">
+              <div class="form-group row">
+                <label for="email" class="col-sm-1">Email Id:</label>
+                <div class="col">
+                  <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id_add" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
+                  <small id="itemcheck"></small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="email" class="col-sm-1">Password:</label>
+                <div class="col">
+                  <input type="password" class="form-control col-sm-4" required name="Password" id="Password_add" aria-describedby="Password_IdHelp" placeholder="Enter Password">
+                  <small id="itemcheck"></small>
+                </div>
+              </div>
+              <input class="btn btn-primary mb-4" type="submit" name="submit_Login" id="submit_Login" value="Submit">
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
   <div class="">
     <div id="about" class="m-5">
       <h2 class="text-capitalize">About Us</h2>
@@ -44,9 +238,15 @@
     </div>
   </div>
 
- 
-  <?php include 'php/footer.php';?>
-  <?php include 'php/flinks.php';?>
-  
- </body>
+
+  <?php include 'php/footer.php'; ?>
+  <?php include 'php/flinks.php'; ?>
+  <script type="text/javascript" src="js/filter.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="js/signup.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/sell_product.js"></script>
+
+</body>
+
 </html>
