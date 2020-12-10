@@ -31,7 +31,7 @@ $(document).ready(function () {
                               data: data,
                               success: function (data) {
                                    serviceDetails.reset();
-                                   alert("successfully added!!!" + data);
+                                   alert("successfully added!!!");
                               }
                          });
                     }

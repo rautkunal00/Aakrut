@@ -107,7 +107,6 @@ else{
 
             $mail->send();
             $output = $otp;
-            $output = $otp;
             echo $otp;
         } catch (Exception $e) {
             $output= false;
