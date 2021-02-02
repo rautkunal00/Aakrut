@@ -18,7 +18,7 @@ $(document).ready(function(){
                     }
                     else if(result){
                         console.log(result);
-                        otp = result;
+                        otp = result.trim();
                         $('#signup').prop( "disabled", true );
                         $('#signupNext').show();
                         alert("Form submitted successfully");

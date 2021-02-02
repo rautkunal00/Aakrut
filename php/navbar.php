@@ -14,13 +14,13 @@
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-      <?php echo ($_SESSION['valid']? '<a class="nav-link" href="product.php">Product</a>' : '<a class="nav-link" href="#" data-toggle="modal" data-target=".start-modal-xl" >Product</a>');?>
+      <a class="nav-link" href="product.php">Product</a>
       </li>
       <li class="nav-item">
-      <?php echo ($_SESSION['valid']? '<a class="nav-link" href="services.php">Services</a>' : '<a class="nav-link" href="#" data-toggle="modal" data-target=".start-modal-xl" >Services</a>');?>
+      <a class="nav-link" href="services.php">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" id="Login_nav" data-toggle="modal" data-target="<?php echo ($_SESSION['valid']? '' : '.start-modal-xl');?>" data-dismiss="modal"><?php echo ($_SESSION['valid']? 'Logout' : 'Login');?> </a>
+      <a class="nav-link" href="Profile.php">Profile</a>
       </li>
     </ul>
   </div>

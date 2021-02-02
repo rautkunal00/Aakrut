@@ -40,73 +40,28 @@ $total_pages = ceil($total_records / $limit);
 
       <div class="col-lg-2 border filter_bar">
  
-        <h5 class="text-capitalize my-3">Filters</h5>
- 
+        <h5 class="text-capitalize my-5">Hello <?php echo $_SESSION['username']?></h5>
+        <h5 class="text-capitalize my-3 mx-4">Filters</h5>
 
-        <div class="form-group">  
-          <label for="Price">Price</label>
-          <input type="hidden" id="hidden_minimum_price" value="0" />
-          <input type="hidden" id="hidden_maximum_price" value="1000" />
-          <p id="price_show"></p>
-          <div id="price_range"></div>
-        </div>    
+        <div class="form-group mx-4">
+          <div class="checkbox">
+              <label><input type="checkbox" class="common_selector type" value="My products"> My products</label>
+          </div>
+          
+          <div class="checkbox">
+              <label><input type="checkbox" class="common_selector type" value="My services"> My services</label>
+          </div>
 
-        <div class="form-group">  
-          <label for="route">Route</label>
-          <select class="form-control" id="Route">
-          </select>
-        </div>
-
-        <div class="form-group">  
-          <label for="college">College</label>
-          <select class="form-control" id="college">
-            <option value="">Select College</option>
-          </select>
-        </div>
-
-        <div class="form-group">  
-          <label for="branch">Branch</label>
-          <select class="form-control" id="branches">
-            <option value="">Select Branch</option> 
-          </select>
-        </div>
-
-        <div class="form-group">  
-          <label for="semester">Semester</label>
-          <select class="form-control" id="semester">
-            <option selected="selected" class="sele" value="0">Select Semester</option>
-          </select>
-        </div>
-
-        <div class="form-group">  
-          <label for="subject">Subject</label>
-          <select class="form-control" id="subject">
-          <option selected="selected" class="sele" value="0">Select subject</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="text-capitalize">Categories</label>
-          <?php
-            $query = "SELECT DISTINCT(Type) FROM products WHERE Is_Sell = '0' ORDER BY Product_Id DESC";
-            $statement = $connect->prepare($query);
-            $statement->execute();
-            $result = $statement->fetchAll();
-            foreach($result as $row)
-              {
-          ?>
-                <div class="checkbox">
-                   <label><input type="checkbox" class="common_selector type" value="<?php echo $row['Type']; ?>"  > <?php echo $row['Type']; ?></label>
-                </div>
-          <?php
-              }
-          ?>
         </div>
       
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".start-modal-xl">
-          Sell your product
-        </button>
+        <p class="mx-4"><button type="button" class="btn btn-primary text-capitalize" data-toggle="modal" data-target=".bd-example-modal-xl">
+          Add product
+        </button></p>
+
+        <p class="mx-4"><button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModalLong">
+          Add services
+        </button></p>
 
       </div>
       <!-- /.col-lg-2 -->
@@ -129,7 +84,7 @@ $total_pages = ceil($total_records / $limit);
         </div>
 
         <div class="border-top p-3 product_page">
-          <div class="row filter_data"></div>
+          <div class="row filter_data_profile"></div>
         </div>
 
         <div id="target-content" class="clearfix">
@@ -170,17 +125,10 @@ $total_pages = ceil($total_records / $limit);
                     <small id="itemcheck"></small>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label for="email" class="col-sm-1">Password</label>
-                  <div class="col">
-                    <input type="password" class="form-control col-sm-4" required name="Password" id="Password_add"  placeholder="Enter Password">
-                    <small id="itemcheck"></small>
-                  </div>
-                </div>
 
-                <input class="btn btn-primary mb-4" type="submit" name="submit_profile" id="submit_profile" value="Submit">
+                <input class="btn btn-primary mb-4" type="submit" name="submit_sell" id="submit_sell" value="Submit">
 
-                <!-- <div class="table-responsive">
+                <div class="table-responsive">
                   <span id="error"></span>
                   <table class="table table-bordered table-sm" id="item_table">
                     <thead>
@@ -201,7 +149,7 @@ $total_pages = ceil($total_records / $limit);
                     </thead>
                     <tbody></tbody>
                   </table>
-                </div> -->
+                </div>
 
                 
               </form> 

@@ -92,7 +92,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
     <div class="col-lg-3 col-md-4 mb-4 product-card">
       <div class="card h-100">
         <img src="./images/product/'. $row['Product_Img'] .'" class="card-img-top mr-auto ml-auto mt-3 mb-3" alt="...">
-        <div class="card-body" id="'. $row['Product_Id'] .'">
+        <div class="card-body product" id="'. $row['Product_Id'] .'">
           <div class="card-title"><div class="mt-auto mb-auto text-center">'. $row['Product_Name'] .'</div></div>
           <div class="card-text price_div"><label class="stock mt-auto mb-auto">IN STOCK</label> <label class="price">Rs. '. $row['Price'] .'</label></div>
           <p class="card-text">'. $row['Branch'] .' <br>(sem '.$row['Semester'].')</p>

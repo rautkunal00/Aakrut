@@ -12,7 +12,7 @@ $(document).ready(function () {
     var sortPrice = "";
 
     fireQuery2();
-
+    fireQuery3();
     
 
     $("#Route").change(function () {
@@ -39,6 +39,7 @@ $(document).ready(function () {
     });
     $("#price").change(function () {
         fireQuery();
+        fireQuery3();
     });
 
     fireQuery();
@@ -155,6 +156,38 @@ $(document).ready(function () {
         });
     }
 
+
+// Profile code 
+
+    function fireQuery3() {
+        getvariables();
+        $.ajax({
+            url: "./php/fetch_data_profile.php",
+            method: "POST",
+            data: {sortPrice: sortPrice},
+            success: function (data) {
+                $('.filter_data_profile').html(data);
+                var obj = $(".product-card");
+                $('#pagination').pagination({
+                    dataSource: $.map(obj, function (value, index) { return [value]; }),
+                    pageSize: 8,
+                    pageNumber: 1,
+                    callback: function (data, pagination) {
+                        $('.buyBtn').click(function () {
+                            var productID = this.parentElement.id;
+                            user_info_product(productID);
+                        });
+                        $.getJSON('data/filter1.json', function (info) {
+                            $.each(info, function (key, value) {
+                                ($(`.clg_name`).length) ? $(`.clg_name.${value.id}`).html("College name: " + value.name) : "";
+                            })
+                        });
+                    }
+                })
+            }
+        });
+    }
+
     function user_info_product(productID) {
         $.ajax({
             url: "./php/get_user_info.php",
@@ -164,8 +197,8 @@ $(document).ready(function () {
             },
             success: function (data) {
                 // alert(data);
-                $('#' + productID + '.card-body').append(data);
-                $('#' + productID + '.card-body .buyBtn').prop("disabled", true);
+                $('#' + productID + '.card-body.product').append(data);
+                $('#' + productID + '.card-body.product .buyBtn').prop("disabled", true);
             }
         });
     }

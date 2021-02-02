@@ -1,4 +1,6 @@
 <?php 
+ob_start();
+session_start();
 
 include('database_connection.php');
 
@@ -10,17 +12,15 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
-   ob_start();
-   session_start();
+   
 
 $output = "";
 $UserName="";
 $EmailId="";
 $UserMobile="";
 
-if( empty($_POST["User_Name"]) || empty($_POST["Email_Id"]) || empty($_POST["Password"]) || empty($_POST["User_Mobile"]) ) {
-    $output = false;
-    echo $output;
+if(empty($_POST["Email_Id"]) ) {
+    echo false;
 }
 else{
 
@@ -37,11 +37,19 @@ else{
     $query = "SELECT * FROM `user_info` WHERE Email_Id='$EmailId'";
     $result = $connect->query($query);
     $rowcount= $result->rowCount();
+
     if($rowcount > 0){
+        $_SESSION['Email_Id'] = $EmailId;
+        $query = "SELECT `User_Name` FROM `user_info` WHERE Email_Id='$EmailId'";
+        $statement = $connect->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $_SESSION['username'] = $result[0]['User_Name'];
         echo 1;
     }
     else if(isset($_POST['Create_user'])){
         $query = "SELECT * FROM `user_info` WHERE 1";
+        $Password= "123456";
         $result = $connect->query($query);
         $rowcount= $result->rowCount();
         $rowcount++;
@@ -49,16 +57,15 @@ else{
         $statement = $connect->prepare($query);
         $statement->execute();
 
-        $_SESSION['valid'] = true;
-        $_SESSION['timeout'] = time();
-        $_SESSION['username'] = $UserName;
-        echo "User created successfully!!!";
+        
+        echo $query;
     }
     else{
         sendMail($EmailId,$UserName);
     }
     
     $connect=null;
+    
 }
 
 
@@ -75,7 +82,7 @@ else{
             for ($i = 1; $i <= $n; $i++) { 
                 $result .= substr($generator, (rand()%(strlen($generator))), 1); 
             } 
-            return $result; 
+            return trim($result,"");
         } 
         $n = 4; 
 
@@ -115,12 +122,11 @@ else{
             $mail->Body    = 'This mail is genrated for email verification<br> Please enter following OTP for verification<br> <b>'.$otp.'<b>';
 
             $mail->send();
-            $output = $otp;
             echo $otp;
         } catch (Exception $e) {
             $output= false;
-            $output= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            echo $output;
+            $output1= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            echo $output1;
         }
   }      
         
