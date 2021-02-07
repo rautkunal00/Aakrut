@@ -40,11 +40,13 @@ else{
 
     if($rowcount > 0){
         $_SESSION['Email_Id'] = $EmailId;
-        $query = "SELECT `User_Name` FROM `user_info` WHERE Email_Id='$EmailId'";
+        $_SESSION['valid'] = true;
+        $query = "SELECT * FROM `user_info` WHERE Email_Id='$EmailId'";
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
-        $_SESSION['username'] = $result[0]['User_Name'];
+        $_SESSION['User_Name'] = $result[0]['User_Name'];
+        $_SESSION['Mobile_No'] = $result[0]['Mobile_No'];
         echo 1;
     }
     else if(isset($_POST['Create_user'])){

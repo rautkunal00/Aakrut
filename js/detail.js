@@ -19,6 +19,35 @@ $(document).ready(function(){
    fetch_post_data(Service_Id);
   });
  
+  $(document).on('click', '#delete_prod', function(){
+    var Prod_Id = this.parentNode.id;
+    
+    $.ajax({
+      url:"./php/delete.php",
+      method:"POST",
+      data:{Prod_Id:Prod_Id},
+      success:function(data)
+      {
+       alert(data);
+       location.href = "profile.php";
+      }
+     });
+   });
+
+   $(document).on('click', '#delete_service', function(){
+    var Service_Id = this.previousElementSibling.id;
+    
+    $.ajax({
+      url:"./php/delete.php",
+      method:"POST",
+      data:{Service_Id:Service_Id},
+      success:function(data)
+      {
+       alert(data);
+       location.href = "profile.php";
+      }
+     });
+   });
 
   
  });

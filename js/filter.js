@@ -10,10 +10,11 @@ $(document).ready(function () {
     var subject = "";
     var type = "";
     var sortPrice = "";
+    var p_prod = 1;
+    var p_service = 2;
 
     fireQuery2();
-    fireQuery3();
-    
+
 
     $("#Route").change(function () {
         fireQuery();
@@ -35,7 +36,11 @@ $(document).ready(function () {
     });
     //checkbox filter
     $('.common_selector').click(function () {
+        p_prod = 0; 
+        p_service = 0
         fireQuery();
+        fireQuery3();
+        fireQuery4();
     });
     $("#price").change(function () {
         fireQuery();
@@ -43,7 +48,8 @@ $(document).ready(function () {
     });
 
     fireQuery();
-    fireQuery2();
+    fireQuery3();
+    fireQuery4();
 
 
 
@@ -60,6 +66,9 @@ $(document).ready(function () {
         semester = $('#semester').val();
         subject = $('#subject').val();
         type = get_filter('type');
+        if (type.length == 0) { p_prod = 3; p_service = 3 }
+        if (type.includes("My services")) { p_service = 2; }
+        if (type.includes("My products")) { p_prod = 1; }
         sortPrice = $('#price').val();
     }
     function get_filter(class_name) {
@@ -129,7 +138,7 @@ $(document).ready(function () {
             success: function (data) {
                 var min_price = 10
                 var max_price = 10;
-                
+
                 data = JSON.parse(data);
                 $.each(data, function (key, value) {
                     max_price = (max_price >= parseInt(value.Price)) ? max_price : parseInt(value.Price);;
@@ -140,31 +149,30 @@ $(document).ready(function () {
                 $('#hidden_minimum_price').val(min_price);
                 $('#hidden_maximum_price').val(max_price);
                 $('#price_range').slider({
-                range: true,
-                min: min_price,
-                max: max_price,
-                values: [min_price, max_price],
-                step: 5,
-                stop: function (event, ui) {
-                $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-                $('#hidden_minimum_price').val(ui.values[0]);
-                $('#hidden_maximum_price').val(ui.values[1]);
-                fireQuery();
-                }
+                    range: true,
+                    min: min_price,
+                    max: max_price,
+                    values: [min_price, max_price],
+                    step: 5,
+                    stop: function (event, ui) {
+                        $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+                        $('#hidden_minimum_price').val(ui.values[0]);
+                        $('#hidden_maximum_price').val(ui.values[1]);
+                        fireQuery();
+                    }
                 });
             }
         });
     }
 
 
-// Profile code 
-
+    // Profile code 
     function fireQuery3() {
         getvariables();
         $.ajax({
             url: "./php/fetch_data_profile.php",
             method: "POST",
-            data: {sortPrice: sortPrice},
+            data: { sortPrice: sortPrice, prod_service: p_prod },
             success: function (data) {
                 $('.filter_data_profile').html(data);
                 var obj = $(".product-card");
@@ -187,6 +195,21 @@ $(document).ready(function () {
             }
         });
     }
+    function fireQuery4() {
+        getvariables();
+        $.ajax({
+            url: "./php/fetch_data_profile.php",
+            method: "POST",
+            data: { action: action, prod_service: p_service },
+            success: function (data) {
+                $('.filter_data_services').html(data);
+                if(p_service==3){   
+                    $('.filter_data_services').html("");
+                }
+            }
+        });
+    }
+
 
     function user_info_product(productID) {
         $.ajax({

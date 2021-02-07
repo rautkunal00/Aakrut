@@ -43,14 +43,13 @@ session_start();
     </a>
   </div>
 
-  <!--=====================        Login first page          ============================== -->
-
-  <div class="modal fade start-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
 
         <div class="modal-header">
-          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Login to proceed</h5>
+          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Sell your product</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -59,27 +58,63 @@ session_start();
         <div class="modal-body">
           <div class="box border p-3">
 
-            <p>Are you a new user?</p>
-            <p>Please signup for proceed further</p>
-            <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".signup-modal-xl" data-dismiss="modal">
-              Sign Up
-            </button>
-            <p>Already register?</p>
-            <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".bd-example-modal-xl" data-dismiss="modal">
-              Login
-            </button>
+            <form name="productDetails" id="productDetails" autocomplete="on" enctype="multipart/form-data" method="post">
+
+              <div class="form-group row">
+                <label for="email" class="col-sm-1">Email Id:</label>
+                <div class="col">
+                  <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id_add" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
+                  <small id="itemcheck"></small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="email" class="col-sm-1">Password</label>
+                <div class="col">
+                  <input type="password" class="form-control col-sm-4" required name="Password" id="Password_add" placeholder="Enter Password">
+                  <small id="itemcheck"></small>
+                </div>
+              </div>
+
+              <input class="btn btn-primary mb-4" type="submit" name="submit_profile" id="submit_profile" value="Submit">
+
+              <!-- <div class="table-responsive">
+                  <span id="error"></span>
+                  <table class="table table-bordered table-sm" id="item_table">
+                    <thead>
+                      <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Region</th>
+                        <th scope="col">College</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Semester</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Categories</th>
+                        <th scope="col">Description</th>
+                        <th><button type="button" name="add" class="btn btn-success btn-sm add" id="add_btn"><i class="fas fa-plus"></i></button></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div> -->
+
+
+            </form>
+
           </div>
         </div>
 
         <div class="modal-footer">
-
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save_changes">Save changes</button>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!--=====================        Signup  page          ============================== -->
 
   <div class="modal fade signup-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -101,14 +136,6 @@ session_start();
                 <label for="email" class="col-sm-1">Email Id:</label>
                 <div class="col">
                   <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
-                  <small id="itemcheck"></small>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="email" class="col-sm-1">Password:</label>
-                <div class="col">
-                  <input type="password" class="form-control col-sm-4" required name="Password" id="Password_add" aria-describedby="Password_IdHelp" placeholder="Enter Password">
                   <small id="itemcheck"></small>
                 </div>
               </div>
@@ -144,8 +171,6 @@ session_start();
       </div>
     </div>
   </div>
-
-  <!--=====================        OTP  page          ============================== -->
 
   <div class="modal fade otp-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -192,12 +217,14 @@ session_start();
     </div>
   </div>
 
-  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+
+
+  <div class="modal fade start-modal-xl" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
 
         <div class="modal-header">
-          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Login</h5>
+          <h5 class="modal-title text-capitalize" id="exampleModalScrollableTitle">Sell your product</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -206,29 +233,26 @@ session_start();
         <div class="modal-body">
           <div class="box border p-3">
 
-            <form name="LoginForm" id="LoginForm" autocomplete="on" enctype="multipart/form-data" method="post">
-              <div class="form-group row">
-                <label for="email" class="col-sm-1">Email Id:</label>
-                <div class="col">
-                  <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id_add" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
-                  <small id="itemcheck"></small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="email" class="col-sm-1">Password:</label>
-                <div class="col">
-                  <input type="password" class="form-control col-sm-4" required name="Password" id="Password_add" aria-describedby="Password_IdHelp" placeholder="Enter Password">
-                  <small id="itemcheck"></small>
-                </div>
-              </div>
-              <input class="btn btn-primary mb-4" type="submit" name="submit_Login" id="submit_Login" value="Submit">
-            </form>
+            <p>Are you a new user?</p>
+            <p>Please signup for proceed further</p>
+            <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".signup-modal-xl" data-dismiss="modal">
+              Sign Up
+            </button>
+            <p>Already register?</p>
+            <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".bd-example-modal-xl" data-dismiss="modal">
+              Sell product
+            </button>
           </div>
+        </div>
+
+        <div class="modal-footer">
+
         </div>
 
       </div>
     </div>
   </div>
+  <!-- /.Modal -->
 
 
   <div class="">

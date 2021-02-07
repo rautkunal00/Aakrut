@@ -21,5 +21,21 @@ $(document).ready(function () {
         })
     })
 
+    $('#logout').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'php/logout.php',
+            type: "post",
+            success: function (result) {
+                if (result == 1) {
+                    location.href = "index.php"
+                }else {
+                    console.log(result);
+                    alert("Something went wrong");
+                }
+            }
+        })
+    })
+
     
 })

@@ -21,6 +21,7 @@ $(document).ready(function () {
                     $.each(jdata, function (key, value) {
                          if (value.id == $('#serviceDetails #colleges').val()) {
                              data = $('#serviceDetails').serialize()+"&College_Name="+value.name;
+                             debugger;
                          }
                     });
                }).then(

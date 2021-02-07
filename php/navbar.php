@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="index.php">
     <h3>Aakrut</h3>
@@ -14,13 +12,13 @@
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="product.php">Product</a>
+        <a class="nav-link" href="product.php">Product</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="services.php">Services</a>
+        <a class="nav-link" href="services.php">Services</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="Profile.php">Profile</a>
+        <?php echo ($_SESSION['valid'] ? '<a class="nav-link" id="logout" href="#">Logout</a>' : '<a class="nav-link" href="#" data-toggle="modal" data-target=".start-modal-xl">Login</a>');  ?>
       </li>
     </ul>
   </div>
