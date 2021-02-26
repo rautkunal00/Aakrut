@@ -36,7 +36,7 @@ $(document).ready(function () {
     });
     //checkbox filter
     $('.common_selector').click(function () {
-        p_prod = 0; 
+        p_prod = 0;
         p_service = 0
         fireQuery();
         fireQuery3();
@@ -174,24 +174,29 @@ $(document).ready(function () {
             method: "POST",
             data: { sortPrice: sortPrice, prod_service: p_prod },
             success: function (data) {
-                $('.filter_data_profile').html(data);
-                var obj = $(".product-card");
-                $('#pagination').pagination({
-                    dataSource: $.map(obj, function (value, index) { return [value]; }),
-                    pageSize: 8,
-                    pageNumber: 1,
-                    callback: function (data, pagination) {
-                        $('.buyBtn').click(function () {
-                            var productID = this.parentElement.id;
-                            user_info_product(productID);
-                        });
-                        $.getJSON('data/filter1.json', function (info) {
-                            $.each(info, function (key, value) {
-                                ($(`.clg_name`).length) ? $(`.clg_name.${value.id}`).html("College name: " + value.name) : "";
-                            })
-                        });
-                    }
-                })
+                if (data == 404) {
+                    
+                } else {
+                    $('.filter_data_profile').html(data);
+                    var obj = $(".product-card");
+                    $('#pagination').pagination({
+                        dataSource: $.map(obj, function (value, index) { return [value]; }),
+                        pageSize: 8,
+                        pageNumber: 1,
+                        callback: function (data, pagination) {
+                            $('.buyBtn').click(function () {
+                                var productID = this.parentElement.id;
+                                user_info_product(productID);
+                            });
+                            $.getJSON('data/filter1.json', function (info) {
+                                $.each(info, function (key, value) {
+                                    ($(`.clg_name`).length) ? $(`.clg_name.${value.id}`).html("College name: " + value.name) : "";
+                                })
+                            });
+                        }
+                    })
+
+                }
             }
         });
     }
@@ -202,8 +207,12 @@ $(document).ready(function () {
             method: "POST",
             data: { action: action, prod_service: p_service },
             success: function (data) {
-                $('.filter_data_services').html(data);
-                if(p_service==3){   
+                if (data == 404) {
+                    $('.filter_data_services').html("<h3>No Data Found</h3>");
+                } else {
+                    $('.filter_data_services').html(data);
+                }
+                if (p_service == 3) {
                     $('.filter_data_services').html("");
                 }
             }

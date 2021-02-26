@@ -78,7 +78,10 @@ if ($_POST["prod_service"] == 1) {
       $output .= '<div class="col-lg-3 col-md-4 mb-4"></div>';
     }
   } else {
-    $output = '<h3>No Data Found</h3>';
+    $_SESSION['product_data'] = 0;
+    if ($_SESSION['product_data'] == 0){
+      $output = 404;
+    }
   }
 }
 
@@ -128,11 +131,15 @@ if ($_POST["prod_service"] == 2) {
       ';
     }
   } else {
-    $output = "No data found";
+    $_SESSION['service_data'] = 0;
+    if ($_SESSION['service_data'] == 0 && $_SESSION['product_data'] == 0){
+      $output = 404;
+    }
   }
 }
 
 if ($_POST["prod_service"] == 3){
   $output = '<h3>Select filter for see your data</h3>';
 }
+
 echo $output;

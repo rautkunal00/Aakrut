@@ -1,3 +1,7 @@
+<?php
+  $activePage = basename($_SERVER['PHP_SELF'], ".php");
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #e3f2fd;">
   <a class="navbar-brand" href="index.php">
     <h3>Aakrut</h3>
@@ -8,17 +12,25 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
+      <li class="nav-item <?= ($activePage == 'index') ? 'active':''; ?>">
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?= ($activePage == 'product') ? 'active':''; ?>">
         <a class="nav-link" href="product.php">Product</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?= ($activePage == 'services') ? 'active':''; ?>">
         <a class="nav-link" href="services.php">Services</a>
       </li>
       <li class="nav-item">
-        <?php echo ($_SESSION['valid'] ? '<a class="nav-link" id="logout" href="#">Logout</a>' : '<a class="nav-link" href="#" data-toggle="modal" data-target=".start-modal-xl">Login</a>');  ?>
+        <?php 
+        if($_SESSION){
+          echo ($_SESSION["valid"] ? '<a class="nav-link" id="logout" href="#">Logout</a>' : '<a class="nav-link" href="#" data-toggle="modal" data-target=".start-modal-xl">Login</a>');  
+        }else{
+          echo ($_SESSION ? '<a class="nav-link" id="logout" href="#">Logout</a>' : '<a class="nav-link" href="#" data-toggle="modal" data-target=".start-modal-xl">Login</a>');  
+        }
+
+        ?>
+
       </li>
     </ul>
   </div>

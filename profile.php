@@ -124,12 +124,11 @@ $total_pages = ceil($total_records / $limit);
               <div class="form-group row">
                 <label for="email" class="col-sm-1">Email Id:</label>
                 <div class="col">
-                  <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id_add" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus>
+                  <input type="email" class="form-control col-sm-4" required name="Email_Id" id="Email_Id_add" aria-describedby="Email_IdHelp" placeholder="Enter Email Id" autofocus value=<?php echo $_SESSION['Email_Id']?>>
                   <small id="itemcheck"></small>
                 </div>
               </div>
 
-              <input class="btn btn-primary mb-4" type="submit" name="submit_sell" id="submit_sell" value="Submit">
 
               <div class="table-responsive">
                 <span id="error"></span>
@@ -294,7 +293,7 @@ $total_pages = ceil($total_records / $limit);
             </button>
             <p>Already register?</p>
             <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".bd-example-modal-xl" data-dismiss="modal">
-              Sell product
+            Sign In
             </button>
           </div>
         </div>

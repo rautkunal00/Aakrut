@@ -1,30 +1,30 @@
 // 
 $(document).ready(function(){
-    $('#add_btn').prop( "disabled", true );
-    $('#save_changes').prop( "disabled", true );
-    $('#item_table').hide();
-    $('#submit_sell').click(function(e){
-        e.preventDefault();
-        $.ajax({
-            url:'php/validateuser.php',
-            type:"post",
-            data:$('#productDetails').serialize(),
-            success:function(result){
-                if(result==1){
-                    $('#item_table').show();
-                    $('#add_btn').prop( "disabled", false );
-                    $('#submit_sell').hide();
-                    $('#save_changes').prop( "disabled", false );
-                    // alert(result);
-                }else if(result==2){
-                    alert("You are not registered! Plese register first");
-                }else{
-                    alert("Something is wrong! Please try again"+result);
-                }
-            }
-        })
+    $('#add_btn').prop( "disabled", false );
+    $('#save_changes').prop( "disabled", false );
+    $('#item_table').show();
+    // $('#submit_sell').click(function(e){
+    //     e.preventDefault();
+    //     $.ajax({
+    //         url:'php/validateuser.php',
+    //         type:"post",
+    //         data:$('#productDetails').serialize(),
+    //         success:function(result){
+    //             if(result==1){
+    //                 $('#item_table').show();
+    //                 $('#add_btn').prop( "disabled", false );
+    //                 $('#submit_sell').hide();
+    //                 $('#save_changes').prop( "disabled", false );
+    //                 // alert(result);
+    //             }else if(result==2){
+    //                 alert("You are not registered! Plese register first");
+    //             }else{
+    //                 alert("Something is wrong! Please try again"+result);
+    //             }
+    //         }
+    //     })
 
-    }) 
+    // }) 
     $('#save_changes').click(function(e){
         e.preventDefault();
         $.ajax({

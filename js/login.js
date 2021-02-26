@@ -21,6 +21,28 @@ $(document).ready(function () {
         })
     })
 
+    $('#login_profile').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'php/login.php',
+            type: "post",
+            data: $('#productDetails').serialize(),
+            success: function (result) {
+                if (result == 1) {
+                    location.href = "profile.php"
+                }
+                else if (result) {
+                    console.log(result);
+                    alert("Username and passwoed is incorrect");
+                    location.href = "index.php"
+                } else {
+                    console.log(result);
+                    alert("Username and passwoed is incorrect");
+                }
+            }
+        })
+    })
+
     $('#logout').click(function (e) {
         e.preventDefault();
         $.ajax({

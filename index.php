@@ -75,7 +75,7 @@ session_start();
                 </div>
               </div>
 
-              <input class="btn btn-primary mb-4" type="submit" name="submit_profile" id="submit_profile" value="Submit">
+              <input class="btn btn-primary mb-4" type="submit" name="login_profile" id="login_profile" value="Submit">
 
               <!-- <div class="table-responsive">
                   <span id="error"></span>
@@ -240,7 +240,7 @@ session_start();
             </button>
             <p>Already register?</p>
             <button type="button" class="btn btn-primary text-capitalize mb-4" data-toggle="modal" data-target=".bd-example-modal-xl" data-dismiss="modal">
-              Sell product
+            Sign In
             </button>
           </div>
         </div>
